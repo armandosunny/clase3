@@ -1,0 +1,76 @@
+
+# Ejercicio 8: Encontrar la secuencia complementaria inversa
+# Encuentra la secuencia complementaria inversa de la secuencia de ADN generada en el Ejercicio 1.
+
+complement_base <- c(A = "T", T = "A", C = "G", G = "C")
+complementary_sequence <- rev(sapply(dna_sequence, function(base) complement_base[[base]]))
+print(paste(complementary_sequence, collapse = ""))
+
+# Ejercicio 9: Introducir mutaciones aleatorias
+# Introduce 5 mutaciones aleatorias en la secuencia de ADN, reemplazando nucleótidos al azar por uno diferente.
+
+mutate_dna <- function(dna_seq, n_mutations) {
+  positions <- sample(1:length(dna_seq), n_mutations)
+  bases <- c("A", "T", "C", "G")
+  for (pos in positions) {
+    dna_seq[pos] <- sample(bases[bases != dna_seq[pos]], 1)
+  }
+  return(dna_seq)
+}
+dna_mutated <- mutate_dna(dna_sequence, 5)
+print(paste(dna_mutated, collapse = ""))
+
+# Ejercicio 10: Calcular el contenido GC de la secuencia
+# Calcula el porcentaje de bases G y C en la secuencia de ADN.
+
+gc_content <- sum(dna_sequence %in% c("G", "C")) / length(dna_sequence) * 100
+print(paste("Contenido GC:", round(gc_content, 2), "%"))
+
+# Ejemplo 1: Buscar secuencias que contengan un motivo específico
+# Usa grep para buscar secuencias de ADN que contengan el motivo "ATG", que suele ser el codón de inicio de muchas proteínas.
+
+secuencias_dna <- c("ATGCGTAC", "CGTACGAT", "GCTATGCG", "TACGGGTA", "ATGCGGTA")
+resultado_atg <- grep("ATG", secuencias_dna)
+print(secuencias_dna[resultado_atg])
+
+# Ejemplo 2: Buscar secuencias que empiecen con un codón específico
+# Utiliza grep para buscar secuencias de ADN que comiencen con el codón "TAC".
+
+resultado_tac <- grep("^TAC", secuencias_dna)
+print(secuencias_dna[resultado_tac])
+
+# Ejemplo 3: Buscar secuencias que terminen con un codón específico
+# Usa grep para encontrar secuencias que terminen con el codón "GTA".
+
+resultado_gta <- grep("GTA$", secuencias_dna)
+print(secuencias_dna[resultado_gta])
+
+# Ejemplo 4: Buscar secuencias que contengan al menos dos adeninas consecutivas
+# Utiliza grep para encontrar secuencias que contengan "AA" (adeninas consecutivas).
+
+resultado_aa <- grep("AA", secuencias_dna)
+print(secuencias_dna[resultado_aa])
+
+# Ejemplo 5: Buscar secuencias que tengan un patrón específico de nucleótidos
+# Busca secuencias que contengan el patrón "CGA", que podría indicar un motivo específico.
+
+resultado_cga <- grep("CGA", secuencias_dna)
+print(secuencias_dna[resultado_cga])
+
+# Ejemplo 6: Buscar secuencias que contengan un dímero (dos nucleótidos repetidos)
+# Usa grep para buscar secuencias que contengan dos nucleótidos consecutivos iguales, como "GG" o "CC".
+
+resultado_dimeros <- grep("(.)\1", secuencias_dna)
+print(secuencias_dna[resultado_dimeros])
+
+# Ejemplo 7: Buscar secuencias que contengan trinucleótidos repetidos
+# Usa grep para buscar secuencias que contengan el mismo trinucleótido repetido consecutivamente.
+
+resultado_trinucleotido <- grep("(...)\1", secuencias_dna)
+print(secuencias_dna[resultado_trinucleotido])
+
+# Ejemplo 8: Buscar secuencias con una longitud específica
+# Utiliza grep para encontrar secuencias de ADN que tengan exactamente 8 nucleótidos de longitud.
+
+resultado_longitud <- grep("^.{8}$", secuencias_dna)
+print(secuencias_dna[resultado_longitud])

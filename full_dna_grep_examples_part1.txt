@@ -1,0 +1,77 @@
+
+# Ejercicio 1: Crear una secuencia de ADN
+# Crea una secuencia de ADN de 50 nucleótidos seleccionados aleatoriamente entre A, T, C, y G.
+
+set.seed(123)  # Para reproducibilidad
+dna_sequence <- sample(c("A", "T", "C", "G"), size = 50, replace = TRUE)
+print(paste(dna_sequence, collapse = ""))
+
+# Ejercicio 2: Contar la frecuencia de cada nucleótido
+# Cuenta cuántas veces aparece cada nucleótido (A, T, C, G) en la secuencia de ADN generada.
+
+nucleotide_count <- table(dna_sequence)
+print(nucleotide_count)
+
+# Ejercicio 3: Buscar un motivo específico en la secuencia
+# Busca cuántas veces aparece un motivo específico, como ATG (inicio de codón de inicio), en la secuencia de ADN.
+
+dna_string <- paste(dna_sequence, collapse = "")
+motif <- "ATG"
+motif_count <- gregexpr(motif, dna_string)[[1]]
+motif_count_total <- sum(motif_count > 0)
+print(paste("El motivo", motif, "aparece", motif_count_total, "veces"))
+
+# Ejercicio 4: Transcribir ADN a ARN
+# Transcribe la secuencia de ADN a ARN, reemplazando las bases de Timina (T) por Uracilo (U).
+
+rna_sequence <- gsub("T", "U", dna_string)
+print(rna_sequence)
+
+# Ejercicio 5: Traducir ARN a proteína
+# Traduce una secuencia de ARN a una secuencia de proteínas usando el código genético estándar.
+
+codon_table <- c(
+  UUU = "F", UUC = "F", UUA = "L", UUG = "L", CUU = "L", CUC = "L", CUA = "L", CUG = "L",
+  AUU = "I", AUC = "I", AUA = "I", AUG = "M", GUU = "V", GUC = "V", GUA = "V", GUG = "V",
+  UCU = "S", UCC = "S", UCA = "S", UCG = "S", CCU = "P", CCC = "P", CCA = "P", CCG = "P",
+  ACU = "T", ACC = "T", ACA = "T", ACG = "T", GCU = "A", GCC = "A", GCA = "A", GCG = "A",
+  UAU = "Y", UAC = "Y", UAA = "*", UAG = "*", CAU = "H", CAC = "H", CAA = "Q", CAG = "Q",
+  AAU = "N", AAC = "N", AAA = "K", AAG = "K", GAU = "D", GAC = "D", GAA = "E", GAG = "E",
+  UGU = "C", UGC = "C", UGA = "*", UGG = "W", CGU = "R", CGC = "R", CGA = "R", CGG = "R",
+  AGU = "S", AGC = "S", AGA = "R", AGG = "R", GGU = "G", GGC = "G", GGA = "G", GGG = "G"
+)
+translate_rna <- function(rna_seq) {
+  codons <- strsplit(rna_seq, "")[[1]]
+  codons <- paste0(codons[c(TRUE, FALSE, FALSE)], codons[c(FALSE, TRUE, FALSE)], codons[c(FALSE, FALSE, TRUE)])
+  proteins <- sapply(codons, function(codon) codon_table[[codon]])
+  paste(proteins, collapse = "")
+}
+protein_sequence <- translate_rna(rna_sequence)
+print(protein_sequence)
+
+# Ejercicio 6: Generar un marco de lectura y encontrar todos los ORFs
+# Identifica todos los posibles marcos de lectura abiertos (ORF) en la secuencia de ADN y tradúcelos en proteínas.
+
+find_orfs <- function(dna_seq) {
+  rna_seq <- gsub("T", "U", dna_seq)
+  frames <- list()
+  for (i in 0:2) {
+    rna_frame <- substring(rna_seq, i + 1)
+    protein_frame <- translate_rna(rna_frame)
+    frames[[i + 1]] <- protein_frame
+  }
+  return(frames)
+}
+orfs <- find_orfs(dna_string)
+print(orfs)
+
+# Ejercicio 7: Contar frecuencias de dímeros
+# Cuenta cuántas veces aparecen pares de nucleótidos consecutivos en la secuencia de ADN.
+
+count_dimers <- function(dna_seq) {
+  dimers <- sapply(1:(length(dna_seq) - 1), function(i) paste0(dna_seq[i], dna_seq[i + 1]))
+  return(table(dimers))
+}
+dimer_count <- count_dimers(dna_sequence)
+print(dimer_count)
+
