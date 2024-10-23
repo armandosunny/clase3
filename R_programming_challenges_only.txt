@@ -1,0 +1,78 @@
+
+1. Filtrar y manipular data frames
+
+Supongamos que tienes el siguiente data frame con información de especies:
+
+especies <- data.frame(
+  especie = c("Ajolote", "Rana", "Serpiente", "Tortuga"),
+  habitat = c("Lago", "Río", "Bosque", "Lago"),
+  tamano = c(30, 10, 150, 50),
+  peso = c(150, 25, 1000, 500)
+)
+
+# Reto:
+# - Filtrar todas las especies que viven en un lago.
+# - Ordenar los resultados por tamaño (de mayor a menor).
+
+
+2. Generación de gráficos
+
+Para este reto, puedes usar el dataset iris que viene preinstalado en R. Se trata de un conjunto de datos sobre flores que incluye medidas como el largo y ancho del sépalo y el pétalo.
+
+# Reto:
+# - Crear un gráfico de dispersión entre Sepal.Length y Sepal.Width, y colorear los puntos según la especie.
+
+
+1. Agrupar datos y realizar cálculos agregados
+
+Supongamos que tienes un data frame con las calificaciones de estudiantes en diferentes asignaturas:
+
+calificaciones <- data.frame(
+  estudiante = c("Ana", "Carlos", "Lucía", "Jorge", "Ana", "Carlos", "Lucía", "Jorge"),
+  asignatura = c("Matemáticas", "Matemáticas", "Matemáticas", "Matemáticas", "Historia", "Historia", "Historia", "Historia"),
+  calificacion = c(95, 85, 92, 88, 78, 82, 85, 90)
+)
+
+# Reto:
+# Agrupar las calificaciones por estudiante y calcular el promedio de calificación por cada uno.
+
+
+2. Transformación de datos y crear nuevas variables
+
+alturas <- data.frame(
+  nombre = c("Laura", "Pedro", "Sara", "Miguel"),
+  altura_cm = c(160, 175, 150, 180)
+)
+
+# Reto:
+# Crear una nueva columna con las alturas en metros y mostrar el nuevo data frame.
+
+
+3. Generación de gráficos de barras
+
+ventas <- data.frame(
+  mes = c("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"),
+  ventas = c(12000, 15000, 13000, 16000, 17500, 14000)
+)
+
+# Reto:
+# Crear un gráfico de barras para visualizar las ventas mensuales.
+
+
+4. Lectura y escritura de archivos CSV
+
+# Crear un data frame de ejemplo
+productos <- data.frame(
+  producto = c("A", "B", "C", "D"),
+  precio = c(20, 35, 50, 10),
+  cantidad_vendida = c(100, 200, 150, 250)
+)
+
+# Reto:
+# Calcular el total de ingresos por producto (precio * cantidad vendida) y agregarlo como una nueva columna.
+
+
+5. Gráfico de caja (boxplot)
+
+# Reto:
+# Crear un gráfico de caja (boxplot) que muestre la distribución de millas por galón (mpg) en función del número de cilindros (cyl).
