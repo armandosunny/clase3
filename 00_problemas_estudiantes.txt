@@ -1,0 +1,45 @@
+
+Elijan la prueba adecuada y justifiquen
+
+1) Enzima X (actividad U/mL). Dos lotes de cultivo celular: Control vs. Tratamiento con un cofactor.
+   Pregunta: ¿El cofactor aumenta la actividad? Variable continua. Muestra independiente.
+   Dataset: 01_enzimaX_actividad.csv
+
+2) Fermentación (rendimiento g/L) con 4 cepas recombinantes (Cepa_1–4).
+   Sospecha: diferencias en medias y en estabilidad (varianzas). Tamaños desiguales.
+   Pregunta: ¿Alguna cepa rinde más? Variable continua, 4 grupos.
+   Dataset: 02_fermentacion_cepas.csv
+
+3) qPCR (Ct) de un gen de interés cultivado en 3 medios (A, B, C). Hay outliers por fallas en extracción.
+   Pregunta: ¿Difieren las distribuciones de Ct entre medios?
+   Dataset: 03_qPCR_medios.csv
+
+4) Biomarcador plasmático (ng/mL) medido en los mismos pacientes antes y 6h después de una dosis.
+   La distribución es asimétrica positiva.
+   Pregunta: ¿Disminuye el biomarcador tras el tratamiento?
+   Dataset: 04_biomarcador_pareado.csv
+
+5) Crecimiento bacteriano (OD600) con/ sin suplemento metabólico en cultivos independientes.
+   Pregunta: ¿El suplemento aumenta la densidad óptica? Variable continua, 2 grupos.
+   Dataset: 05_cultivo_OD600.csv
+
+6) Actividad antimicrobiana (halo en mm) de 3 extractos botánicos vs. Control (placa de difusión).
+   Pregunta: ¿Algún extracto supera al control y a los otros? Variable continua, 4 grupos.
+   Dataset: 06_halos_antimicrobianos.csv
+
+7) MIC (µg/mL) frente a un antibiótico en cepas silvestres (WT) vs. mutantes.
+   Los datos son asimétricos (log-normales) y varianzas distintas.
+   Pregunta: ¿Cambió la resistencia con la mutación?
+   Dataset: 07_MIC_mutacion.csv
+
+8) Producción de proteína recombinante (mg/L) a 5 temperaturas (25, 30, 33, 37, 40 °C).
+   Tamaños y varianzas no idénticas.
+   Pregunta: ¿Cuál temperatura maximiza la producción? Variable continua, 5 grupos.
+   Dataset: 08_proteina_temperatura.csv
+
+Indicaciones:
+• Describan el diseño (independientes vs. pareados), supuestos y justificación de la prueba elegida.
+• Verifiquen normalidad 
+• Reporten: estadístico, gl, p-valor, tamaño de efecto y un gráfico apropiado.
+• Si usan prueba no paramétrica, incluyan medianas y rangos/intercuartiles.
+• Para comparaciones múltiples, agreguen post hoc
